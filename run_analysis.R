@@ -89,6 +89,6 @@ avg_subj_activity <- aggregate(. ~Type + Activity + Subject, mean_and_std, mean)
 # Write the tidy table to an Excel file
 library(xlsx)
 write.xlsx(avg_subj_activity, file="./UCI HAR Dataset/avg_subj_activity.xlsx", 
-           sheetName="Subj by Activity Avg")
+           sheetName="Subj by Activity - Avg")
 
 
