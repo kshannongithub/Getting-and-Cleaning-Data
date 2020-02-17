@@ -14,7 +14,7 @@ if (!file.exists("UCI HAR Dataset")) {
 }
 
 ## 1. Merges the training and the test sets to create one data set.
-# Read in the training data sets.
+#     Read in the training data sets.
 train_x <- read.table("./UCI HAR Dataset/train/X_train.txt")
 train_y <- read.table("./UCI HAR Dataset/train/y_train.txt")
 train_subject <- read.table("./UCI HAR Dataset/train/subject_train.txt")
@@ -63,7 +63,7 @@ mean_and_std <-  combined_data[ , has_mean_or_std == TRUE]
 
 
 # 3. Uses descriptive activity names to name the activities in the data set.
-# Replace the index from the activity_labels file with the descriptive name
+#    Replace the index from the activity_labels file with the descriptive name
 mean_and_std$Activity <- gsub("1", "WALKING", mean_and_std$Activity)
 mean_and_std$Activity <- gsub("2", "WALKING_UPSTAIRS", mean_and_std$Activity)
 mean_and_std$Activity <- gsub("3", "WALKING_DOWNSTAIRS", mean_and_std$Activity)
@@ -73,7 +73,7 @@ mean_and_std$Activity <- gsub("6", "LAYING", mean_and_std$Activity)
 
 
 # 4. Appropriately labels the data set with descriptive variable names.
-# Modify column names to make them more readable
+#    Modify column names to make them more readable
 names(mean_and_std) <- gsub("BodyBody", "Body", names(mean_and_std))
 names(mean_and_std) <- gsub("tBody", "TimeBody", names(mean_and_std))
 names(mean_and_std) <- gsub("fBody", "FreqBody", names(mean_and_std))
