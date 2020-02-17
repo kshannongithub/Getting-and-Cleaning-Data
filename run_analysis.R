@@ -2,7 +2,7 @@
 
 ### Purpose of this project is to demonstrate your ability to collect, work with, and clean a data set.
 
-### Here are the data for the project:
+### Here are the data for the project
 filename <- "getdata_dataset.zip"
 fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip "
 ## Download and unzip the dataset:
