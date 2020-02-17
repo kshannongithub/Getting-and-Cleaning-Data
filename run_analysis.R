@@ -27,16 +27,6 @@ test_subject <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 features <- read.table("./UCI HAR Dataset/features.txt")
 activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
 
-# Understand data sets
-# dim(test_x); test_x_names <- names(test_x); tail(test_x_names)
-# str(test_y)
-# str(test_subject)
-# dim(train_x); train_x_names <- names(train_x); tail(train_x)
-# str(train_y)
-# str(train_subject)
-# str(features)
-# View(activity_labels)
-
 # Merge the columns of the Training tables, and add column to distinguish test and training data 
 #  when the rows are merged
 ID_train_x <- cbind("Train", train_subject, train_y, train_x)
@@ -67,7 +57,8 @@ has_mean_or_std <- (grepl("Type", all_col_names) |
                     grepl("Activity", all_col_names) |
                     grepl("mean", all_col_names) |
                     grepl("std", all_col_names))
-# Create a table from the columns that should be kept (Type, Subject, Activity, containing "std" and "mean") 
+# Create a table from the columns that should be kept (Type, Subject, Activity, 
+# containing "std" and "mean") 
 mean_and_std <-  combined_data[ , has_mean_or_std == TRUE]           
 
 
@@ -89,16 +80,13 @@ names(mean_and_std) <- gsub("fBody", "FreqBody", names(mean_and_std))
 names(mean_and_std) <- gsub("tGravity", "TimeGravity", names(mean_and_std))
 names(mean_and_std) <- gsub("-mean", "Mean", names(mean_and_std))
 names(mean_and_std) <- gsub("-std", "Std", names(mean_and_std))
-# names(mean_and_std) <- gsub("()", "", names(mean_and_std))  # Not working
 
 
 # 5. From the data set in step 4, creates a second, independent tidy data set.
 #    with the average of each variable for each activity and each subject.
 avg_subj_activity <- aggregate(. ~Type + Activity + Subject, mean_and_std, mean)
-# This one didn't work
-# avg_subj_activity2 <- aggregate(mean_and_std, by=list(Subject, Activity), FUN=mean)
 
-# Write the table to a file
+# Write the tidy table to an Excel file
 library(xlsx)
 write.xlsx(avg_subj_activity, file="./UCI HAR Dataset/avg_subj_activity.xlsx", 
            sheetName="Subj by Activity Avg")
