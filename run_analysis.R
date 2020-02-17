@@ -37,15 +37,12 @@ ID_test_x <- cbind("Test", test_subject, test_y, test_x)
 colnames(ID_test_x) <- c("Type", "Subject", "Activity")
 
 # Append the Test data to the Training data 
-# Got stuck a couple hours(!) here wirh rbind and column names:
-# attempt to set 'colnames' on an object with less than two dimensions
 combined_data <- rbind(ID_train_x, ID_test_x, deparse.level = 0)  # colnames = FALSE)
 
 # Create column names for the new columns
 new_col_names <- c("Type", "Subject", "Activity")
 feature_col_names <- as.character(features[,2])
 all_col_names <- c(new_col_names, feature_col_names)
-# Removed the indexing here and it worked;
 colnames(combined_data) <- all_col_names
 
 
@@ -82,7 +79,7 @@ names(mean_and_std) <- gsub("-mean", "Mean", names(mean_and_std))
 names(mean_and_std) <- gsub("-std", "Std", names(mean_and_std))
 
 
-# 5. From the data set in step 4, creates a second, independent tidy data set.
+# 5. From the data set in step 4, creates a second, independent tidy data set,
 #    with the average of each variable for each activity and each subject.
 avg_subj_activity <- aggregate(. ~Type + Activity + Subject, mean_and_std, mean)
 
