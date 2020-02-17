@@ -1,0 +1,40 @@
+# Getting and Cleaning Data Code Book
+
+1. Data for the project comes from 
+"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+File "getdata_dataset.zip" is extracted and creates folder "UCI HAR Dataset".
+It consists of the following files:
+- features_info.txt': Shows information about the variables used on the feature vector.
+- 'features.txt': List of all features.
+- 'activity_labels.txt': Links the class labels with their activity name.
+- 'train/X_train.txt': Training set.
+- 'train/y_train.txt': Training labels.
+- 'test/X_test.txt': Test set.
+- 'test/y_test.txt': Test labels.
+- 'subject_train.txt': Each row identifies the subject who performed the activity for each window sample. 
+    Its range is from 1 to 30.
+
+2. The columns of the Training tables (train_subject, train_y, train_x) are merged and prefixed 
+   with a column to distinguish test and training data. Columns of the Test tables (test_subject, test_y, test_x) 
+   are also merged and prefixed with a similar column to demark data as Test (vs Training).
+   
+3. Test data is appended to Training data in the "combined_data" file.
+
+4. A file ("has_mean_or_std") is created that includes only columns with measurements of the mean and standard deviation.
+   The integers representing Activity are replaced with the text name (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS,
+   SITTING, STANDING, LAYING).
+   
+5. The column names ar modified to be more readable.  Specifically:
+- “tBody" to "TimeBody
+- “fBody" to "FreqBody"
+-“tGravity" to "TimeGravity
+“-mean" to "Mean"
+"-std" to "Std"
+   Also fixed typo to change "BodyBody" to "Body"
+
+6. Create a file (avg_subj_activity) to that contains the average for each measure and is sirted by Subject, then Activtiy, 
+   then Type (Train" or "Test").
+
+7. The final tidy file is saved to an Excel fie (avg_subj_activity.xlsx).
+
+
